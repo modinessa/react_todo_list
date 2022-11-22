@@ -9,29 +9,38 @@ class App extends Component {
   state = {
     items:[],
     id:uuidv4(),
-    item:'',
+    title:'',
     editItem: false
   }
+
   handleChange = (e) => {
     this.setState({
-      item: e.target.value
+      title: e.target.value
     });
   }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const newItem = {
       id:this.state.id,
-      item: this.state.item
-    }
-    this.state.items.push(newItem);
+      title: this.state.title
+    };
+
     const updatedItems = [...this.state.items, newItem];
+
     this.setState({
       items:updatedItems,
-      item:'',
+      title:'',
       id:uuidv4(),
       editItem:false
-    });
-    console.log(this.state)
+    });  
+  }
+
+  clearList = () => {
+    this.setState({
+      items:[],
+      title:''
+    })
   }
   render() {
     return (
@@ -42,11 +51,14 @@ class App extends Component {
               todo input
             </h3>
           <TodoInput
-            item={this.state.item}
+            item={this.state.title}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
           />
-          <TodoList />
+          <TodoList
+            items={this.state.items}
+            clearList={this.clearList}
+          />
           </div>
         </div>
       </div>
