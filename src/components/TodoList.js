@@ -8,7 +8,7 @@ export default class TodoList extends Component {
             <ul className="list-group my-5">
                 <h3 className="text-capitalize text-center">todo list</h3>
                 <TodoItem/>
-                <button className="btn btn-danger btn-block text-capitalize mt-5">clear list</button>
+                <button className="btn btn-danger btn-block text-capitalize mt-4">clear list</button>
             </ul>
             )
     }
