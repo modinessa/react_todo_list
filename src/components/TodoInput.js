@@ -6,7 +6,7 @@ import { faBook } from '@fortawesome/free-solid-svg-icons';
 export default class TodoInput extends Component {
 
     render() {
-        const {item, handleChange, handleSubmit} = this.props;
+        const {item, handleChange, handleSubmit, editItem} = this.props;
         return (
             <div className="card card-body my-3">
                 <form onSubmit={handleSubmit}>
@@ -24,8 +24,14 @@ export default class TodoInput extends Component {
                             onChange={handleChange}
                         />
                     </div>
-                <button type="submit" className="btn btn-block
-                btn-primary text-capitalize mt-3 w-100">add item</button>
+                <button
+                    type="submit"
+                    className={
+                        editItem ? 'btn btn-block btn-success text-capitalize mt-3 w-100' : 
+                        'btn btn-block btn-primary text-capitalize mt-3 w-100'
+                    }>
+                    {editItem ? "edit item" : "add item"}
+                </button>
                 </form>
             </div>
         )
